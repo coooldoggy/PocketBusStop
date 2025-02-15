@@ -1,4 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -29,10 +28,13 @@ kotlin {
     }
     
     sourceSets {
-        
+        iosMain.dependencies {
+            implementation(libs.decompose.core)
+        }
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.decompose.core)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -43,6 +45,8 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
+            implementation(libs.decompose.core)
+            implementation(libs.decompose.compose)
             implementation(projects.shared)
         }
     }
